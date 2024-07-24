@@ -2,7 +2,20 @@
 // Function to populate language options
 function populateLanguages() {
     const select = document.getElementById('language');
-    const voices = speechSynthesis.getVoices();
+
+    // List of voices including Hindi (example list, may need adjustment based on available voices)
+    const voices = [
+        { name: 'US English Female', lang: 'US English Female' },
+        { name: 'US English Male', lang: 'US English Male' },
+        { name: 'UK English Female', lang: 'UK English Female' },
+        { name: 'UK English Male', lang: 'UK English Male' },
+        { name: 'Spanish Female', lang: 'Spanish Female' },
+        { name: 'French Female', lang: 'French Female' },
+        { name: 'German Female', lang: 'German Female' },
+        { name: 'Hindi Female', lang: 'Hindi Female' }, // Hindi language option
+        { name: 'Hindi Male', lang: 'Hindi Male' },     // Hindi language option
+        // Add more voices if needed
+    ];
 
     // Clear existing options
     select.innerHTML = '';
@@ -10,14 +23,14 @@ function populateLanguages() {
     // Populate dropdown with available voices and languages
     voices.forEach(voice => {
         const option = document.createElement('option');
-        option.value = voice.name;
+        option.value = voice.lang;
         option.textContent = `${voice.name} (${voice.lang})`;
         select.appendChild(option);
     });
 
     // Set a default option if available
     if (voices.length > 0) {
-        select.value = voices[0].name;
+        select.value = voices[0].lang;
     }
 }
 
@@ -25,23 +38,15 @@ function populateLanguages() {
 function speakText() {
     const textArea = document.getElementById('text');
     const text = textArea.value;
-    const selectedVoiceName = document.getElementById('language').value;
+    const selectedVoiceLang = document.getElementById('language').value;
 
     if (text.trim() === '') {
         alert('Please enter some text.');
         return;
     }
 
-    // Get available voices and select the chosen one
-    const voices = speechSynthesis.getVoices();
-    const utterance = new SpeechSynthesisUtterance(text);
-    const voice = voices.find(v => v.name === selectedVoiceName);
-
-    if (voice) {
-        utterance.voice = voice;
-    }
-
-    speechSynthesis.speak(utterance);
+    // Use ResponsiveVoice to speak the text
+    responsiveVoice.speak(text, selectedVoiceLang);
 }
 
 // Function to update word count and enforce word limit
@@ -73,13 +78,5 @@ document.getElementById('text').addEventListener('keydown', (event) => {
     }
 });
 
-// Populate languages when voices are loaded
-function onVoicesChanged() {
-    populateLanguages();
-}
-
-// Event listener for voiceschanged event
-speechSynthesis.addEventListener('voiceschanged', onVoicesChanged);
-
 // Initial call to populate languages when the page loads
-window.addEventListener('load', onVoicesChanged);
+window.addEventListener('load', populateLanguages);
