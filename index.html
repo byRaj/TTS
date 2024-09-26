@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -5,30 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Text-to-Speech</title>
     <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&family=Playfair+Display&family=Poppins:wght@600&family=Pacifico&family=Orbitron:wght@500&family=Lobster&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
   </head>
   <body>
     <header>
       <b><u>Text-to-Speech</u></b>
     </header>
+    <div id="frame">
+      <div
+        id="text-container"
+        contenteditable="true"
+        placeholder="Enter text here....Word limit is 500!"
+      ></div>
+      <div id="file">
+        <label for="File"><b>Choose file:</b></label>
+        <input type="file" name="" id="File" accept="application/pdf" />
+      </div>
 
-    <textarea
-      name=""
-      maxlength="200"
-      id="text"
-      placeholder="Enter text here....Word limit is 200!"
-    ></textarea>
+      <div id="lang">
+        <label for="language"><b>Select Accent:</b></label>
+        <select id="language">
+          <!-- Options will be populated by JavaScript -->
+        </select>
+      </div>
 
-    <div>
-      <label for="language"><b>Select Language:</b></label>
-      <select id="language">
-        <!-- Options will be populated by JavaScript -->
-      </select>
+      <button type="button" id="btn">Speak</button>
     </div>
-
-    <button type="button" id="btn">Speak</button>
-
     <script src="https://code.responsivevoice.org/responsivevoice.js?key=iOv1jxaQ"></script>
-
     <script src="script.js"></script>
   </body>
 </html>
