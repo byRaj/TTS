@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
             { name: 'Spanish Female', lang: 'Spanish Female' },
             { name: 'French Female', lang: 'French Female' },
             { name: 'Hindi Female', lang: 'Hindi Female' }, // Hindi language option
-            /*{ name: 'Hindi Male', lang: 'Hindi Male' }, */    // Hindi language option
+            { name: 'Hindi Male', lang: 'Hindi Male' },     // Hindi language option
         ];
 
         // Clear existing options
@@ -46,10 +46,10 @@ document.addEventListener('DOMContentLoaded', function () {
             console.error("Text container element not found");
             return;
         }
-        const text = textContainer.innerText;
+        const text = textContainer.innerText.trim();
         const selectedVoiceLang = document.getElementById('language').value;
 
-        if (text.trim() === '') {
+        if (text === '') {
             alert('Please enter some text.');
             return;
         }
@@ -57,62 +57,13 @@ document.addEventListener('DOMContentLoaded', function () {
         // Use ResponsiveVoice to speak the text
         responsiveVoice.speak(text, selectedVoiceLang, {
             onstart: () => {
-                highlightText(text);
+                console.log('Speech started');
             },
             onend: () => {
-                clearHighlight();
+                console.log('Speech ended');
             },
         });
     }
-
-    // Function to highlight the text as it is spoken
-    /* function highlightText(text) {
-         const textContainer = document.getElementById('text-container');
-         if (!textContainer) {
-             console.error("Text container element not found");
-             return;
-         }
- 
-         const words = text.split(' ');
-         textContainer.innerHTML = ''; // Clear existing content
- 
-         words.forEach((word, index) => {
-             const span = document.createElement('span');
-             span.textContent = word + ' ';
-             span.id = `word-${index}`;
-             textContainer.appendChild(span);
-         });
- 
-         let wordIndex = 0;
-         const interval = setInterval(() => {
-             if (wordIndex < words.length) {
-                 const currentWord = document.getElementById(`word-${wordIndex}`);
-                 if (currentWord) {
-                     currentWord.classList.add('highlight');
-                 }
- 
-                 if (wordIndex > 0) {
-                     const previousWord = document.getElementById(`word-${wordIndex - 1}`);
-                     if (previousWord) {
-                         previousWord.classList.remove('highlight');
-                     }
-                 }
-                 wordIndex++;
-             } else {
-                 clearInterval(interval);
-             }
-         }, 400); // Adjust the timing as needed
-     }
- 
-     // Function to clear the highlight after speaking
-     function clearHighlight() {
-         const textContainer = document.getElementById('text-container');
-         if (!textContainer) {
-             console.error("Text container element not found");
-             return;
-         }
-         textContainer.innerHTML = textContainer.innerText; // Remove highlighting
-     }*/
 
     // Function to update word count and enforce word limit
     function enforceWordLimit() {
