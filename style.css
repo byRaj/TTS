@@ -1,3 +1,4 @@
+
 * {
   margin: 0;
   padding: 0;
@@ -5,13 +6,16 @@
 }
 
 body {
+  background-image: url(megaphone-with-speech-bubble-banner-loudspeaker-can-be-used-business-advertising_435184-690.avif);
+  background-repeat: no-repeat;
+  background-size: cover;
   background-color: #ADD8E6;
   font-family: 'Arial', sans-serif;
   text-align: center;
 }
 
 header {
-  background-color: #708090;
+  background-color: #8b30e6;
   padding: 10px 30px; /* Adds padding for better spacing */
   color: #e3e1e1;
   font-family: 'Helvetica', sans-serif;
@@ -21,10 +25,11 @@ header {
   display: inline-block; /* Makes the header width fit the text */
   border-radius: 50px; /* Creates an oval shape */
   margin-top: 20px; /* Adds spacing above the header */
+  box-shadow: yellowgreen 5px 5px;
 }
 
 #frame {
-  background-color: #E5E5E5;
+  background-color: #f2f0ec;
   margin: 20px auto;
   padding: 10px;
   border: 1px solid #ccc;
@@ -32,6 +37,7 @@ header {
   max-width: 700px;
   width: 90%; /* Adjust width based on screen size */
   text-align: center;
+  box-shadow: yellowgreen 5px 5px 0px 5px;
 }
 
 #text-container {
@@ -40,7 +46,7 @@ header {
   width: 100%;
   height: 400px;
   overflow-y: auto;
-  background-color: #f9f9f9;
+  background-color: #8f8d8dbb;
   border-radius: 4px;
   font-family: Arial, sans-serif;
   font-size: 14px;
@@ -52,6 +58,7 @@ header {
 }
 
 #file, #lang label {
+  margin-top: 5px;
   font-weight: bold;
   font-size: 1.5rem;
   font-family: "Roboto", sans-serif;
@@ -128,4 +135,30 @@ header {
     font-size: 1.1rem;
     padding: 15px 25px;
   }
+}
+footer {
+  background-color: #333; /* Dark background for the footer */
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  padding: 10px;
+  text-align: center;
+  position: sticky; /* Sticky footer that stays at the bottom */
+  bottom: 0;
+  width: 100%;
+  margin-top: 140px; /* Ensures the footer stays at the bottom */
+  margin-bottom: 5px; 
+}
+
+.footer-marquee {
+  height: 60px; /* Height for the marquee container */
+  display: flex;
+  align-items: center;
+  overflow: hidden; /* Ensure overflow is hidden */
+}
+
+marquee {
+  font-size: 1.5em; /* Font size for the marquee text */
+  font-family: 'Arial', sans-serif; /* Font family */
+  color: #fff; /* Text color */
+  height: 100%; /* Occupies full height of container */
+  line-height: 60px; /* Vertically center text in the container */
 }
